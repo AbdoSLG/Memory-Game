@@ -91,3 +91,13 @@ body{
 .container .box .has-match{
     transform: rotateY(180deg);
 }
+
+
+@media (min-width:877px) {
+    .box{
+        grid-template-columns: repeat(auto-fill , 160px) !important;
+    }
+    .container{
+        width: 698px;
+    }
+}
