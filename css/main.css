@@ -101,3 +101,21 @@ body{
         width: 698px;
     }
 }
+
+/* result  */
+
+.result{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #30277eb3;
+    flex-direction: column;
+    color: white;
+    font-size: 24px;
+}
+.result h2{
+    margin: 0;
+}

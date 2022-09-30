@@ -3,8 +3,8 @@
 
 // in start game 
 document.querySelector(".control-buttons span").addEventListener("click" , ()=>{
-    document.getElementById("elz3ama").play();
     let yourName=prompt("what is ypur name?");
+    document.getElementById("elz3ama").play();
         if(yourName==null||yourName==""){
             document.querySelector(".info span").innerHTML="UnKnown";
         }else{
@@ -41,17 +41,20 @@ blocks.forEach((block , index)=>{
 //   random element 
 function shafile(array){
 
-    let current=array.length , temp ;
+    let current=array.length 
+    , temp ;
+
+
 
     while(current >0){
 
-        let random=Math.floor(Math.random() *current);
+        let random=Math.floor(Math.random() * current);
 
         current--;
 
-        temp=array[current];
+        temp=array[current - 1 ];
 
-        array[current]=array[random];
+        array[current -1 ]=array[random];
 
         array[random]=temp;
 
@@ -81,6 +84,10 @@ function flip(e){
         check(allFlipped[0],allFlipped[1])
 
     }    
+
+
+
+
 }    
 
 
@@ -90,7 +97,6 @@ function stopClicking(){
     box.classList.add("no-clicking")
     setTimeout(()=>{
         box.classList.remove("no-clicking")
-        
     } , duration)
 
 }
@@ -125,5 +131,50 @@ function  check(blockOne , blockTwo){
             blockTwo.classList.remove("is-flipped")
         } , duration)
     }
+
+
+    // check after end this game
+    let allblocks=blocks.filter(block=>block.classList.contains("has-match"));
+
+    while(allblocks.length===blocks.length){
+
+        let result=document.createElement("div")
+        result.className="result"
+
+        let triesText= tries.innerHTML
+        let triesCount=document.createElement("h2")
+        triesCount.innerHTML=`Your Tries Count Is ${triesText}`;
+
+        let p=document.createElement("h1")
+        p.className="resultP"
+
+
+        if(parseInt(triesText) <= blocks.length /2 ){
+            p.innerHTML=`Perfect, ${document.querySelector(".info span").innerHTML}`
+        }else if(parseInt(triesText) > (blocks.length /2 )  ){
+            p.innerHTML=`Good, ${document.querySelector(".info span").innerHTML}`
+        }else if(parseInt(triesText) >( blocks.length /2 )+ 10 ){
+            p.innerHTML=`Not Bad, ${document.querySelector(".info span").innerHTML}`
+        }else if(parseInt(triesText) > (blocks.length /2 )+ 14 ){
+            p.innerHTML=`Bad, ${document.querySelector(".info span").innerHTML}`
+        }
+
+
+        result.appendChild(p)
+        result.appendChild(triesCount)
+
+        document.body.appendChild(result)
+
+        break;
+    }
+
 }
+
+// remove popup result
+document.addEventListener("click" , (e)=>{
+    if(e.target.classList.contains("result")){
+        e.target.remove()
+        location.reload()
+    }
+})
 
