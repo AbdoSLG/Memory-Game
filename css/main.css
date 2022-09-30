@@ -40,7 +40,7 @@ body{
 }
 .container .box {
     display: grid;
-    grid-template-columns: repeat(auto-fill , minmax(100px , 1fr));
+    grid-template-columns: repeat(auto-fill , minmax(86px , 1fr));
     gap: 6px;
 }
 .container .box.no-clicking {
@@ -69,7 +69,6 @@ body{
     position: absolute;
     color: white;
     font-size: 93px;
-    left: 38px;
 }
 .container .box .block .front{
     background-color: #847ba9;
@@ -84,6 +83,9 @@ body{
     position:absolute;
     text-align: center;
     backface-visibility: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .container .box .is-flipped,
 .container .box .has-match{
